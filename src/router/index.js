@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Database from '@/components/Database'
+import Table from '@/components/Table'
+import Field from '@/components/Field'
 
 Vue.use(Router)
 
@@ -8,8 +10,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Database',
+      component: Database
+    },
+    {
+      path: '/table',
+      name: 'Table',
+      component: Table
+    },
+    {
+      path: '/field',
+      name: 'Field',
+      component: Field
     }
   ]
 })
