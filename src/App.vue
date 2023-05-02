@@ -5,6 +5,9 @@
                 <div id="header">
                     <span>DatabaseCompare —— 数据库比对工具</span>
                     <a id="author" href="https://github.com/DarlingCY/DatabaseCompare">By GreenLemon</a>
+                    <el-button style="float: right;font-weight: bold" type="primary" plain @click.stop="overloadAndCompare">
+                        重载比对
+                    </el-button>
                 </div>
             </el-header>
             <el-container>
@@ -34,7 +37,25 @@
 
 <script>
 export default {
-    name: 'App'
+    name: 'App',
+    methods: {
+        overloadAndCompare() {
+            const loading = this.$loading({
+                lock: true,
+                text: '正在重载数据库数据，如长时间未响应，请手动刷新页面'
+            });
+            this.$axios.post("/compare/overloadAndCompare").then(res => {
+                if (res.data.code === 0 && res.data.data) {
+                    loading.close()
+                    window.location.reload()
+                } else {
+                    this.Message.error(res.data.msg)
+                }
+            }).catch(e => {
+                this.Message.error(e)
+            })
+        }
+    }
 }
 </script>
 
