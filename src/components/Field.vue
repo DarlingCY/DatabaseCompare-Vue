@@ -1,6 +1,7 @@
 <template>
     <div class="field">
-        <el-collapse accordion>
+        <el-empty v-if="fieldDifference.length<=0" description="暂无差异"></el-empty>
+        <el-collapse accordion v-else>
             <el-collapse-item v-for="(item,index) in fieldDifference" :key="index">
                 <template slot="title">
                     <div style="font-size: 1rem; font-weight: bold">

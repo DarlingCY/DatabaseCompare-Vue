@@ -1,6 +1,7 @@
 <template>
     <div class="database">
-        <el-descriptions direction="vertical" :column="1" border>
+        <el-empty v-if="databaseDifference.addedDatabase.length<=0&&databaseDifference.deletedDatabase.length<=0" description="暂无差异"></el-empty>
+        <el-descriptions direction="vertical" :column="1" border v-else>
             <el-descriptions-item label="新增数据库" v-if="databaseDifference.addedDatabase.length>0" :labelStyle="{fontWeight:'bold'}">
                 <Tag v-for="(item,index) in databaseDifference.addedDatabase" :key="index" :type="'success'" :text="item"/>
             </el-descriptions-item>
