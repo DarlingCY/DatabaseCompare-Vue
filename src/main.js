@@ -10,8 +10,8 @@ import '@/fonts/css/fonts.css'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
-axios.defaults.baseURL = "/api"
-// axios.defaults.baseURL = ""
+// axios.defaults.baseURL = "/api"
+axios.defaults.baseURL = ""
 Vue.prototype.$axios = axios
 /* eslint-disable no-new */
 new Vue({
